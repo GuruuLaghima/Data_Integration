@@ -63,10 +63,10 @@ hdfs dfs -put data/raw/processed_population_data.csv /data/raw/
 
 ### **4. Publier les données avec Kafka**
 
-#### **Exécuter le producteur Kafka**
+#### **Exécuter le producer Kafka**
 Depuis votre environnement local :
 ```bash
-python scripts/producer.py
+python scripts/kafka_producer.py
 ```
 
 ---
@@ -86,7 +86,7 @@ hdfs dfs -ls /data/processed/enriched_data
 
 Afficher un aperçu :
 ```bash
-hdfs dfs -cat /data/processed/enriched_data/part-*.csv | head -n 10
+hdfs dfs -cat '/data/processed/enriched_data/part-*.csv' | head -n 10
 ```
 
 ---
@@ -118,6 +118,6 @@ python scripts/mongodb_insert.py
    ```
 3. Lister les documents insérés :
    ```javascript
-   db.enriched_metrics.find().pretty();
+   db.metrics_summary.find().pretty();
    ```
 ---
